@@ -1,0 +1,89 @@
+---
+import BaseLayout from '@layouts/base-layout.astro';
+import translations from '@locales/es.json';
+import { CircleCheck } from '@lucide/astro';
+
+const t = translations;
+const legal = t.legal;
+---
+
+<BaseLayout
+  title={t.nav.legal}
+  description="Aviso legal y política de privacidad de Reformas Laguxan SL"
+  keywords="aviso legal, RGPD, protección de datos"
+>
+  <!-- Header Section -->
+  <section class="section-padding bg-gradient-to-r from-primary to-primary-dark text-white">
+    <div class="container-custom text-center">
+      <h1 class="text-5xl md:text-6xl font-bold mb-6">{legal.title}</h1>
+      <p class="text-lg text-white/90">{legal.lastUpdated}</p>
+    </div>
+  </section>
+
+  <!-- Legal Content -->
+  <section class="section-padding bg-white">
+    <div class="container-custom max-w-4xl">
+      <div class="prose prose-lg max-w-none space-y-8">
+        <!-- Company Identification -->
+        <div class="card">
+          <h2 class="text-3xl font-bold text-neutral-dark mb-6">{legal.company.title}</h2>
+          <div class="space-y-2 text-secondary">
+            <p>{legal.company.name}</p>
+            <p>{legal.company.cif}</p>
+            <p>{legal.company.address}</p>
+            <p>{legal.company.email}</p>
+            <p>{legal.company.phone}</p>
+          </div>
+        </div>
+
+        <!-- RGPD Section -->
+        <div class="card bg-blue-50">
+          <h2 class="text-3xl font-bold text-neutral-dark mb-6">{legal.rgpd.title}</h2>
+          <p class="text-secondary mb-4">{legal.rgpd.intro}</p>
+          <ul class="space-y-3">
+            {
+              legal.rgpd.points.map((point: string) => (
+                <li class="flex items-start gap-3">
+                  <CircleCheck class="w-6 h-6 text-primary flex-shrink-0 mt-1" />
+                  <span class="text-secondary">{point}</span>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+
+        <!-- Terms of Use -->
+        <div class="card">
+          <h2 class="text-3xl font-bold text-neutral-dark mb-6">{legal.terms.title}</h2>
+
+          <div class="space-y-6">
+            <div>
+              <h3 class="text-2xl font-bold text-neutral-dark mb-3">{legal.terms.liability}</h3>
+              <p class="text-secondary">{legal.terms.liabilityText}</p>
+            </div>
+
+            <div>
+              <h3 class="text-2xl font-bold text-neutral-dark mb-3">{legal.terms.ip}</h3>
+              <p class="text-secondary">{legal.terms.ipText}</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact for Legal Matters -->
+        <div class="card bg-accent/10">
+          <h3 class="text-2xl font-bold text-neutral-dark mb-4">Contacto Legal</h3>
+          <p class="text-secondary mb-4">
+            Para cualquier consulta relacionada con el aviso legal o la protección de datos, puede
+            contactarnos en:
+          </p>
+          <p class="text-primary font-semibold">{legal.company.email}</p>
+        </div>
+
+        <!-- Back to Home -->
+        <div class="text-center pt-8">
+          <a href="/" class="btn btn-primary"> Volver al Inicio </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

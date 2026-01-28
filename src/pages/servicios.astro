@@ -1,0 +1,119 @@
+---
+import BaseLayout from '@layouts/base-layout.astro';
+import translations from '@locales/es.json';
+import ServiceCard from '@components/service-card.astro';
+
+const t = translations;
+const services = t.services.list;
+---
+
+<BaseLayout
+  title={t.nav.services}
+  description={t.services.subtitle}
+  keywords={`${t.seo.keywords}, servicios reformas`}
+>
+  <!-- Header Section -->
+  <section class="section-padding h-[400px] bg-gradient-to-r from-primary to-primary-dark text-white flex items-center">
+    <div class="container-custom text-center">
+      <h1 class="text-5xl md:text-6xl font-bold mb-6">{t.services.title}</h1>
+      <p class="text-xl max-w-3xl mx-auto text-white/90">
+        {t.services.subtitle}
+      </p>
+    </div>
+  </section>
+
+  <!-- Services Grid -->
+  <section class="section-padding bg-white">
+    <div class="container-custom">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Bathrooms -->
+        <ServiceCard
+          title={services.bathrooms.title}
+          description={services.bathrooms.description}
+          benefits={services.bathrooms.benefits}
+          icon="wrench"
+        />
+
+        <!-- Kitchens -->
+        <ServiceCard
+          title={services.kitchens.title}
+          description={services.kitchens.description}
+          benefits={services.kitchens.benefits}
+          icon="home"
+        />
+
+        <!-- Integral Renovations -->
+        <ServiceCard
+          title={services.integral.title}
+          description={services.integral.description}
+          benefits={services.integral.benefits}
+          icon="home"
+        />
+
+        <!-- Energy Rehabilitation -->
+        <ServiceCard
+          title={services.energy.title}
+          description={services.energy.description}
+          benefits={services.energy.benefits}
+          icon="wrench"
+        />
+
+        <!-- Apartments in Height -->
+        <ServiceCard
+          title={services.apartments.title}
+          description={services.apartments.description}
+          benefits={services.apartments.benefits}
+          icon="home"
+        />
+
+        <!-- Flooring -->
+        <ServiceCard
+          title={services.flooring.title}
+          description={services.flooring.description}
+          benefits={services.flooring.benefits}
+          icon="wrench"
+        />
+
+        <!-- Painting -->
+        <ServiceCard
+          title={services.painting.title}
+          description={services.painting.description}
+          benefits={services.painting.benefits}
+          icon="paint"
+        />
+
+        <!-- Accessibility -->
+        <ServiceCard
+          title={services.accessibility.title}
+          description={services.accessibility.description}
+          benefits={services.accessibility.benefits}
+          icon="home"
+        />
+
+        <!-- Extensions -->
+        <ServiceCard
+          title={services.extensions.title}
+          description={services.extensions.description}
+          benefits={services.extensions.benefits}
+          icon="wrench"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="section-padding bg-gray-50">
+    <div class="container-custom">
+      <div class="max-w-2xl mx-auto text-center bg-white card">
+        <h2 class="text-3xl font-bold text-neutral-dark mb-4">¿No encuentras lo que buscas?</h2>
+        <p class="text-lg text-secondary mb-6">
+          Ofrecemos soluciones personalizadas para todo tipo de reformas. Contáctanos para discutir
+          tu proyecto.
+        </p>
+        <a href="/contacto" class="btn btn-primary text-lg">
+          {t.services.cta}
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

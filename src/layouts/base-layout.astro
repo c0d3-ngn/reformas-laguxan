@@ -1,0 +1,70 @@
+---
+import { ViewTransitions } from 'astro:transitions';
+import SeoHead from '@components/seo-head.astro';
+import SiteHeader from '@components/site-header.astro';
+import SiteFooter from '@components/site-footer.astro';
+import translations from '@locales/es.json';
+import '@styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  keywords?: string;
+  image?: string;
+}
+
+const { title, description, keywords, image } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <ViewTransitions />
+    <SeoHead title={title} description={description} keywords={keywords} image={image} />
+
+    <!-- JSON-LD Structured Data for Local Business -->
+    <script
+      type="application/ld+json"
+      is:inline
+      set:html={JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'LocalBusiness',
+        name: 'Reformas Laguxan SL',
+        description:
+          'Reformas Laguxan SL es una empresa especializada en reformas integrales de viviendas unifamiliares y en altura en la Comunidad de Madrid.',
+        url: Astro.site,
+        telephone: translations.seo.structuredData.phone,
+        email: translations.seo.structuredData.email,
+        address: {
+          '@type': 'PostalAddress',
+          addressLocality: translations.seo.structuredData.address.locality,
+          addressRegion: translations.seo.structuredData.address.region,
+          addressCountry: translations.seo.structuredData.address.country,
+        },
+        geo: {
+          '@type': 'GeoCoordinates',
+          latitude: translations.seo.structuredData.geo.latitude,
+          longitude: translations.seo.structuredData.geo.longitude,
+        },
+        openingHoursSpecification: {
+          '@type': 'OpeningHoursSpecification',
+          dayOfWeek: translations.seo.structuredData.openingHours,
+          opens: translations.seo.structuredData.opens,
+          closes: translations.seo.structuredData.closes,
+        },
+        priceRange: '$$',
+        areaServed: {
+          '@type': 'City',
+          name: translations.seo.structuredData.address.locality,
+        },
+      })}
+    />
+  </head>
+  <body class="flex flex-col min-h-screen">
+    <SiteHeader />
+    <main class="flex-grow">
+      <slot />
+    </main>
+    <SiteFooter />
+  </body>
+</html>

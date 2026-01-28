@@ -1,0 +1,77 @@
+---
+import translations from '../locales/es.json';
+import { Mail, Phone, Clock } from '@lucide/astro';
+
+const currentYear = new Date().getFullYear();
+const footerLinks = [
+  { label: translations.nav.home, href: '/' },
+  { label: translations.nav.services, href: '/servicios' },
+  { label: translations.nav.portfolio, href: '/proyectos' },
+  { label: translations.nav.contact, href: '/contacto' },
+  { label: translations.nav.legal, href: '/aviso-legal' },
+];
+---
+
+<footer class="bg-neutral-dark text-white mt-auto">
+  <div class="container-custom section-padding">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
+      <!-- About Column -->
+      <div class="space-y-4">
+        <img
+          src="/logo.svg"
+          alt="Logo Reformas Laguxan"
+          class="h-16 w-16 mb-4"
+          width="48"
+          height="48"
+        />
+        <h3 class="text-xl font-bold text-accent">{translations.footer.about.title}</h3>
+        <p class="text-secondary-light leading-relaxed">
+          {translations.footer.about.description}
+        </p>
+      </div>
+
+      <!-- Quick Links Column -->
+      <div class="space-y-4">
+        <h3 class="text-xl font-bold text-accent">{translations.footer.quickLinks}</h3>
+        <ul class="space-y-2">
+          {
+            footerLinks.map((link) => (
+              <li>
+                <a
+                  href={link.href}
+                  class="text-secondary-light hover:text-accent transition-colors link-hover"
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <!-- Contact Column -->
+      <div class="space-y-4">
+        <h3 class="text-xl font-bold text-accent">{translations.footer.contact}</h3>
+        <div class="text-secondary-light space-y-2">
+          <p class="flex items-center gap-2">
+            <Mail class="w-5 h-5 text-accent" />
+            <span>{translations.contact.info.email}</span>
+          </p>
+          <p class="flex items-center gap-2">
+            <Phone class="w-5 h-5 text-accent" />
+            <span>{translations.contact.info.phone}</span>
+          </p>
+          <p class="flex items-center gap-2">
+            <Clock class="w-5 h-5 text-accent" />
+            <span>{translations.contact.info.hours}</span>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Copyright -->
+    <div class="border-t border-secondary-light/30 mt-8 pt-6 text-center text-secondary-light">
+      <p>{translations.footer.copyright.replace('2026', currentYear.toString())}</p>
+    </div>
+  </div>
+</footer>

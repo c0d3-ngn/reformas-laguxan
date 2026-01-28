@@ -1,0 +1,36 @@
+---
+import { House, Paintbrush, Wrench, type AstroComponent } from '@lucide/astro';
+import UiButton from './ui-button.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  benefits?: string;
+  icon?: string;
+}
+
+const { title, description, benefits, icon = 'wrench' } = Astro.props;
+
+const icons: Record<string, AstroComponent> = {
+  wrench: Wrench,
+  home: House,
+  paint: Paintbrush,
+};
+
+const IconComponent = icons[icon] || Wrench;
+---
+
+<div class="card group flex flex-col h-full">
+  <div
+    class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors"
+  >
+    <IconComponent class="w-8 h-8 text-primary" />
+  </div>
+
+  <h3 class="text-2xl font-bold text-neutral-dark mb-3">{title}</h3>
+  <p class="text-secondary mb-4 leading-relaxed">{description}</p>
+
+  {benefits && <p class="text-sm text-primary/80 italic mb-4">{benefits}</p>}
+
+  <UiButton variant="accent" href="/contacto" class="mt-auto w-full"> Más Información </UiButton>
+</div>

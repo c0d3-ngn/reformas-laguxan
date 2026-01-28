@@ -1,0 +1,70 @@
+---
+import { X } from '@lucide/astro';
+---
+
+<div
+  id="project-modal"
+  class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 hidden flex items-center justify-center p-2 md:p-4"
+>
+  <div
+    class="bg-white rounded-2xl max-w-4xl w-full max-h-[98vh] md:max-h-[90vh] overflow-y-auto relative animate-scale-in"
+  >
+    <!-- Close Button -->
+    <button
+      id="close-modal"
+      class="absolute top-2 right-2 md:top-4 md:right-4 z-10 bg-white/90 backdrop-blur-sm rounded-full p-2 hover:bg-white transition-colors shadow-lg border border-gray-100"
+    >
+      <X class="w-6 h-6" />
+    </button>
+
+    <!-- Modal Content -->
+    <div id="modal-content" class="p-8">
+      <!-- Content will be injected through JavaScript -->
+    </div>
+  </div>
+</div>
+
+<style>
+  @keyframes scaleIn {
+    from {
+      transform: scale(0.9);
+      opacity: 0;
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  @keyframes scaleOut {
+    from {
+      transform: scale(1);
+      opacity: 1;
+    }
+    to {
+      transform: scale(0.9);
+      opacity: 0;
+    }
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.3s ease-out forwards;
+  }
+
+  .animate-scale-out {
+    animation: scaleOut 0.2s ease-in forwards;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.4s ease-out forwards;
+  }
+</style>

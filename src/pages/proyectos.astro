@@ -1,0 +1,79 @@
+---
+import ProjectCard from '@components/project-card.astro';
+import ProjectModal from '@components/project-modal.astro';
+import BaseLayout from '@layouts/base-layout.astro';
+import translations from '@locales/es.json';
+---
+
+<BaseLayout
+  title={translations.nav.portfolio}
+  description={translations.portfolio.subtitle}
+  keywords={`${translations.seo.keywords}, proyectos`}
+>
+  <!-- Header Section -->
+  <section
+    class="section-padding h-[400px] bg-gradient-to-r from-primary to-primary-dark text-white flex items-center"
+  >
+    <div class="container-custom text-center">
+      <h1 class="text-5xl md:text-6xl font-bold mb-6">{translations.portfolio.title}</h1>
+      <p class="text-xl max-w-3xl mx-auto text-white/90">
+        {translations.portfolio.subtitle}
+      </p>
+    </div>
+  </section>
+
+  <!-- Projects Gallery -->
+  <section class="section-padding bg-white">
+    <div class="container-custom">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {
+          translations.portfolio.projects.map((project) => (
+            <ProjectCard
+              id={project.id}
+              title={project.title}
+              date={project.date}
+              location={project.location}
+              description={project.description}
+            />
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Project Modal -->
+  <ProjectModal />
+
+  <!-- CTA Section -->
+  <section class="section-padding bg-gray-50">
+    <div class="container-custom">
+      <div class="max-w-2xl mx-auto text-center bg-white card">
+        <h2 class="text-3xl font-bold text-neutral-dark mb-4">
+          ¿Quieres que tu proyecto sea el próximo?
+        </h2>
+        <p class="text-lg text-secondary mb-6">
+          Transformamos hogares en toda la Comunidad de Madrid. Contacta con nosotros para empezar
+          tu reforma.
+        </p>
+        <a href="/contacto" class="btn btn-primary text-lg"> Solicitar Presupuesto </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  import { initProjectModal } from '@scripts/projects';
+  import translations from '@locales/es.json';
+
+  const projects = translations.portfolio.projects;
+
+  function setup() {
+    initProjectModal(projects);
+  }
+
+  // Initialize
+  setup();
+
+  // Re-initialize after View Transitions
+  document.addEventListener('astro:after-swap', setup);
+</script>

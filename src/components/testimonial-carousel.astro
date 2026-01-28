@@ -1,0 +1,68 @@
+---
+import TestimonialCard from './testimonial-card.astro';
+import testimonials from '@data/testimonials.json';
+import { ChevronLeft, ChevronRight } from '@lucide/astro';
+---
+
+<div class="relative group max-w-5xl mx-auto px-12" id="testimonial-carousel-container">
+  <!-- Carousel Track -->
+  <div
+    id="testimonial-track"
+    class="flex gap-6 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-8 scroll-smooth"
+  >
+    {
+      testimonials.map((testimonial) => (
+        <div class="flex-none w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] snap-center">
+          <TestimonialCard
+            name={testimonial.name}
+            location={testimonial.location}
+            quote={testimonial.quote}
+            rating={testimonial.rating}
+          />
+        </div>
+      ))
+    }
+  </div>
+
+  <!-- Navigation Buttons -->
+  <button
+    id="testimonial-prev"
+    class="absolute left-0 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white p-3 rounded-full shadow-lg border border-gray-100 transition-all opacity-0 group-hover:opacity-100 focus:opacity-100"
+    aria-label="Anterior testimonio"
+  >
+    <ChevronLeft class="w-6 h-6 text-primary" />
+  </button>
+  <button
+    id="testimonial-next"
+    class="absolute right-0 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white p-3 rounded-full shadow-lg border border-gray-100 transition-all opacity-0 group-hover:opacity-100 focus:opacity-100"
+    aria-label="Siguiente testimonio"
+  >
+    <ChevronRight class="w-6 h-6 text-primary" />
+  </button>
+
+  <!-- Dots Indicators -->
+  <div id="testimonial-dots" class="flex justify-center gap-2 mt-4">
+    <!-- Dots will be injected by JavaScript -->
+  </div>
+</div>
+
+<style>
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+</style>
+
+<script>
+  import { initTestimonialsCarousel } from '@scripts/testimonials';
+
+  function setup() {
+    initTestimonialsCarousel();
+  }
+
+  setup();
+  document.addEventListener('astro:after-swap', setup);
+</script>

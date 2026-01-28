@@ -1,0 +1,37 @@
+---
+import { Quote, Star } from '@lucide/astro';
+
+interface Props {
+  name: string;
+  location: string;
+  quote: string;
+  rating: number;
+}
+
+const { name, location, quote, rating } = Astro.props;
+---
+
+<div class="card flex flex-col h-full">
+  <!-- Stars Rating -->
+  <div class="flex gap-1 mb-4">
+    {
+      Array.from({ length: 5 }).map((_, i) => (
+        <Star
+          class={`w-5 h-5 ${i < rating ? 'text-accent fill-accent' : 'text-secondary-light'}`}
+        />
+      ))
+    }
+  </div>
+
+  <!-- Quote -->
+  <blockquote class="relative">
+    <Quote class="absolute -top-2 -left-2 w-8 h-8 text-accent/20 fill-accent/20" />
+    <p class="text-lg text-neutral-dark italic leading-relaxed pl-6">"{quote}"</p>
+  </blockquote>
+
+  <!-- Author -->
+  <div class="mt-auto pt-4 border-t border-secondary-light/30">
+    <p class="font-bold text-neutral-dark">{name}</p>
+    <p class="text-sm text-secondary">{location}</p>
+  </div>
+</div>

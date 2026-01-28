@@ -1,0 +1,97 @@
+---
+import translations from '@locales/es.json';
+import { Menu } from '@lucide/astro';
+
+const navItems = [
+  { label: translations.nav.home, href: '/' },
+  { label: translations.nav.services, href: '/servicios' },
+  { label: translations.nav.portfolio, href: '/proyectos' },
+  { label: translations.nav.contact, href: '/contacto' },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="sticky top-0 z-50 bg-white/95 backdrop-blur-custom shadow-md" id="main-header">
+  <nav class="container-custom section-padding py-4">
+    <div class="flex items-center justify-between">
+      <!-- Logo -->
+      <a href="/" class="flex items-center transition-transform hover:scale-105">
+        <img
+          src="/logo.svg"
+          alt="Logo Reformas Laguxan"
+          class="h-12 w-12 md:hidden"
+          width="48"
+          height="48"
+        />
+        <img
+          src="/full-logo.svg"
+          alt="Logo completo Reformas Laguxan"
+          class="hidden md:block h-14"
+          width="280"
+          height="60"
+        />
+      </a>
+
+      <!-- Desktop Navigation -->
+      <ul class="hidden md:flex items-center gap-8">
+        {
+          navItems.map((item) => (
+            <li>
+              <a
+                href={item.href}
+                class={`font-medium transition-colors hover:text-primary link-hover ${
+                  currentPath === item.href ? 'text-primary font-bold' : 'text-secondary'
+                }`}
+              >
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+
+      <!-- Mobile Menu Button -->
+      <button
+        type="button"
+        id="mobile-menu-toggle"
+        class="md:hidden p-2 text-primary hover:bg-primary/10 rounded-lg transition-colors"
+        aria-label="Abrir menú"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+      >
+        <Menu class="w-6 h-6" />
+      </button>
+    </div>
+
+    <!-- Mobile Navigation -->
+    <div
+      id="mobile-menu"
+      class="md:hidden absolute top-full left-0 right-0 bg-white shadow-lg transition-all duration-300 ease-in-out overflow-hidden max-h-0 opacity-0"
+      aria-hidden="true"
+    >
+      <ul class="flex flex-col gap-2 p-4">
+        {
+          navItems.map((item) => (
+            <li>
+              <a
+                href={item.href}
+                class={`block py-3 px-4 rounded-lg font-medium transition-colors ${
+                  currentPath === item.href
+                    ? 'bg-primary text-white'
+                    : 'text-secondary hover:bg-primary/10'
+                }`}
+              >
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </nav>
+</header>
+
+<script>
+  import '@scripts/menu';
+</script>

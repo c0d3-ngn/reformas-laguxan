@@ -1,0 +1,30 @@
+[
+    {
+        "id": 1,
+        "name": "María López",
+        "location": "Madrid",
+        "quote": "Excelente trabajo en mi baño, rápido y económico.",
+        "rating": 5
+    },
+    {
+        "id": 2,
+        "name": "Juan García",
+        "location": "Fuenlabrada",
+        "quote": "Reforma integral perfecta, superaron mis expectativas.",
+        "rating": 5
+    },
+    {
+        "id": 3,
+        "name": "Ana Martínez",
+        "location": "Leganés",
+        "quote": "Profesionales con experiencia, recomiendo 100%.",
+        "rating": 5
+    },
+    {
+        "id": 4,
+        "name": "Carlos Ruiz",
+        "location": "Getafe",
+        "quote": "Precios ajustados y calidad impecable.",
+        "rating": 5
+    }
+]

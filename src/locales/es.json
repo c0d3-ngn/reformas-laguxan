@@ -1,0 +1,257 @@
+{
+  "site": {
+    "name": "Reformas Laguxan SL",
+    "description": "Reformas Laguxan SL es una empresa especializada en reformas integrales de viviendas unifamiliares y en altura en la Comunidad de Madrid. Nos enfocamos en transformaciones personalizadas de cualquier tipo de hogar, desde baños y cocinas hasta rehabilitaciones completas. Con precios ajustados y calidad garantizada por clientes satisfechos.",
+    "tagline": "Reformas de calidad a precios ajustados en Madrid"
+  },
+  "nav": {
+    "home": "Inicio",
+    "services": "Servicios",
+    "portfolio": "Proyectos",
+    "contact": "Contacto",
+    "legal": "Aviso Legal"
+  },
+  "home": {
+    "hero": {
+      "title": "Transformamos tu hogar con calidad y experiencia",
+      "subtitle": "Más de 20 años especializados en reformas integrales de viviendas en la Comunidad de Madrid",
+      "heroAlt": "Reforma de cocina moderna realizada por Reformas Laguxan SL en Madrid",
+      "ctaPrimary": "Solicitar Presupuesto Gratis",
+      "ctaSecondary": "Ver Servicios"
+    },
+    "about": {
+      "title": "Sobre Nosotros",
+      "mission": "Proporcionar reformas de alta calidad a precios competitivos, mejorando la vida de los hogares en Madrid con soluciones prácticas y duraderas.",
+      "values": "Fundada en el año 2000. Valores clave: calidad asegurada respaldada por numerosos clientes y precios muy ajustados para hacer accesibles las reformas de calidad."
+    },
+    "servicesTitle": "Nuestros Servicios",
+    "testimonialsTitle": "Lo Que Dicen Nuestros Clientes",
+    "ctaSection": {
+      "title": "¿Listo para transformar tu hogar?",
+      "description": "Con más de 20 años de experiencia combinada, ofrecemos asesoramiento personalizado, materiales de calidad y garantías extendidas en todas las obras.",
+      "cta": "Contacta con Nosotros"
+    }
+  },
+  "services": {
+    "title": "Nuestros Servicios",
+    "subtitle": "Especialistas en reformas integrales para todo tipo de viviendas en la Comunidad de Madrid",
+    "list": {
+      "bathrooms": {
+        "title": "Reformas de Baños",
+        "description": "Moderniza tu baño con diseños contemporáneos, duchas italianas, azulejos ecológicos y acabados de primera calidad.",
+        "benefits": "Mejora la funcionalidad y el valor de tu hogar con un baño renovado."
+      },
+      "kitchens": {
+        "title": "Reformas de Cocinas",
+        "description": "Cocinas modernas con islas centrales, electrodomésticos eficientes y espacios optimizados para toda la familia.",
+        "benefits": "Crea el corazón del hogar con una cocina funcional y atractiva."
+      },
+      "integral": {
+        "title": "Reformas Integrales de Viviendas",
+        "description": "Transformaciones completas de viviendas unifamiliares y pisos, desde el diseño hasta la ejecución.",
+        "benefits": "Renueva completamente tu hogar con un proyecto personalizado."
+      },
+      "energy": {
+        "title": "Rehabilitaciones Energéticas",
+        "description": "Mejoras de aislamiento, ventanas eficientes y sistemas que reducen el consumo energético de tu vivienda.",
+        "benefits": "Ahorra en facturas y contribuye al medio ambiente."
+      },
+      "apartments": {
+        "title": "Reformas de Pisos en Altura",
+        "description": "Especialistas en reformas de apartamentos y pisos con acceso complejo, cumpliendo todas las normativas.",
+        "benefits": "Adaptamos nuestro trabajo a las necesidades específicas de edificios."
+      },
+      "flooring": {
+        "title": "Instalación de Suelos y Techos",
+        "description": "Suelos laminados, tarima, baldosas y techos con acabados modernos y duraderos.",
+        "benefits": "Renueva tus espacios con materiales de calidad y estilo."
+      },
+      "painting": {
+        "title": "Pintura y Acabados",
+        "description": "Renovación interior con colores neutros, pinturas ecológicas y acabados profesionales.",
+        "benefits": "Dale un aire fresco a tu hogar con colores que reflejan tu estilo."
+      },
+      "accessibility": {
+        "title": "Accesibilidad para Hogares",
+        "description": "Instalación de rampas, baños adaptados y modificaciones para mejorar la accesibilidad.",
+        "benefits": "Haz tu hogar más seguro y cómodo para todos."
+      },
+      "extensions": {
+        "title": "Ampliaciones de Espacios",
+        "description": "Ampliaciones menores, cerramientos de terrazas y aprovechamiento de espacios infrautilizados.",
+        "benefits": "Gana espacio sin mudarte de tu hogar actual."
+      }
+    },
+    "cta": "Solicitar Información"
+  },
+  "portfolio": {
+    "title": "Nuestros Proyectos",
+    "subtitle": "Ejemplos reales de transformaciones que hemos realizado en la Comunidad de Madrid",
+    "projects": [
+      {
+        "id": 1,
+        "title": "Reforma Integral de Piso en Centro Madrid",
+        "date": "2022",
+        "location": "Madrid Centro",
+        "description": "Transformación completa de un apartamento de 80m² con cocina abierta y baño moderno.",
+        "images": [
+          1,
+          5,
+          3
+        ]
+      },
+      {
+        "id": 2,
+        "title": "Rehabilitación de Casa Unifamiliar en Fuenlabrada",
+        "date": "2023",
+        "location": "Fuenlabrada",
+        "description": "Mejora energética con aislamiento y ventanas nuevas en una vivienda de dos plantas.",
+        "images": [
+          2,
+          6
+        ]
+      },
+      {
+        "id": 3,
+        "title": "Reforma de Baño en Leganés",
+        "date": "2021",
+        "location": "Leganés",
+        "description": "Actualización a estilo contemporáneo con ducha italiana y azulejos ecológicos.",
+        "images": [
+          3,
+          6
+        ]
+      },
+      {
+        "id": 4,
+        "title": "Ampliación de Cocina en Getafe",
+        "date": "2024",
+        "location": "Getafe",
+        "description": "Integración de isla central y electrodomésticos eficientes en una cocina familiar.",
+        "images": [
+          4,
+          1
+        ]
+      },
+      {
+        "id": 5,
+        "title": "Pintura y Acabados en Alcorcón",
+        "date": "2020",
+        "location": "Alcorcón",
+        "description": "Renovación interior con colores neutros y suelos laminados en un piso en altura.",
+        "images": [
+          5,
+          1
+        ]
+      },
+      {
+        "id": 6,
+        "title": "Adaptación para Accesibilidad en Móstoles",
+        "date": "2023",
+        "location": "Móstoles",
+        "description": "Instalación de rampas y baños adaptados en una vivienda unifamiliar.",
+        "images": [
+          6,
+          2
+        ]
+      },
+      {
+        "id": 7,
+        "title": "Reforma de Terraza en Parla",
+        "date": "2022",
+        "location": "Parla",
+        "description": "Cerramiento y decoración de terraza para uso todo el año.",
+        "images": [
+          7,
+          5
+        ]
+      }
+    ]
+  },
+  "contact": {
+    "title": "Contacto",
+    "subtitle": "¿Tienes un proyecto en mente? Contáctanos para un presupuesto gratuito",
+    "form": {
+      "name": "Nombre completo",
+      "email": "Correo electrónico",
+      "phone": "Teléfono",
+      "message": "Cuéntanos sobre tu proyecto",
+      "submit": "Enviar Mensaje",
+      "sending": "Enviando...",
+      "success": "¡Mensaje enviado! Te contactaremos pronto.",
+      "error": "Hubo un error. Por favor, intenta de nuevo."
+    },
+    "info": {
+      "title": "Información de Contacto",
+      "email": "[email@laguxan.es]",
+      "phone": "[+34 XXX XXX XXX]",
+      "hours": "Lunes a Viernes, 9:00 - 18:00",
+      "hoursLabel": "Horario de Atención"
+    }
+  },
+  "footer": {
+    "about": {
+      "title": "Reformas Laguxan SL",
+      "description": "Más de 20 años especializados en reformas integrales de viviendas en la Comunidad de Madrid."
+    },
+    "quickLinks": "Enlaces Rápidos",
+    "contact": "Contacto",
+    "copyright": "© 2026 Reformas Laguxan SL. Todos los derechos reservados."
+  },
+  "legal": {
+    "title": "Aviso Legal",
+    "lastUpdated": "Última actualización: 25 de enero de 2026",
+    "company": {
+      "title": "Identificación de la Empresa",
+      "name": "Titular: Reformas Laguxan SL",
+      "cif": "CIF: [Indicar CIF]",
+      "address": "Domicilio Social: [Indicar Dirección Completa]",
+      "email": "Email de contacto: [email@laguxan.es]",
+      "phone": "Teléfono: [+34 XXX XXX XXX]",
+      "registry": "Datos Registrales: [Indicar datos de inscripción en el Registro Mercantil]"
+    },
+    "rgpd": {
+      "title": "Protección de Datos (RGPD)",
+      "intro": "De conformidad con el Reglamento (UE) 2016/679 (RGPD) y la LOPDGDD 3/2018, le informamos:",
+      "points": [
+        "Responsable: Los datos serán tratados por Reformas Laguxan SL con la única finalidad de gestionar su solicitud de presupuesto o consulta técnica.",
+        "Legitimación: Basada en el consentimiento del interesado al enviar el formulario de contacto.",
+        "Conservación: Los datos se conservarán durante el tiempo necesario para atender la consulta y cumplir con obligaciones legales.",
+        "Derechos: Puede ejercer sus derechos de acceso, rectificación, supresión, limitación, portabilidad y oposición contactando en [email@laguxan.es].",
+        "Autoridad de Control: Tiene derecho a presentar una reclamación ante la AEPD (agpd.es) si considera que sus derechos han sido vulnerados."
+      ]
+    },
+    "terms": {
+      "title": "Condiciones de Uso",
+      "liability": "Exención de Responsabilidad",
+      "liabilityText": "Reformas Laguxan SL vela por la veracidad de la información contenida en este sitio web, no obstante, no se hace responsable de posibles errores tipográficos o de funcionamiento técnico ajeno a su control. Los contenidos y enlaces de terceros se ofrecen a título informativo, sin responsabilidad sobre su veracidad o actualización.",
+      "ip": "Propiedad Intelectual",
+      "ipText": "Todos los contenidos de este sitio web, incluyendo textos, logotipos e imágenes son propiedad exclusiva de Reformas Laguxan SL y están protegidos por la Ley de Propiedad Intelectual española e internacional."
+    }
+  },
+  "seo": {
+    "keywords": "reformas Madrid, reformas viviendas Comunidad de Madrid, rehabilitaciones Fuenlabrada, reformas baños Madrid, reformas cocinas Madrid, reformas integrales, reformas pisos Madrid",
+    "structuredData": {
+      "phone": "+34 XXX XXX XXX",
+      "email": "email@laguxan.es",
+      "address": {
+        "locality": "Madrid",
+        "region": "Comunidad de Madrid",
+        "country": "ES"
+      },
+      "geo": {
+        "latitude": "40.4168",
+        "longitude": "-3.7038"
+      },
+      "openingHours": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday"
+      ],
+      "opens": "09:00",
+      "closes": "18:00"
+    }
+  }
+}

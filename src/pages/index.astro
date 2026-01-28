@@ -1,0 +1,142 @@
+---
+import ServiceCard from '@components/service-card.astro';
+import TestimonialCarousel from '@components/testimonial-carousel.astro';
+import UiButton from '@components/ui-button.astro';
+import BaseLayout from '@layouts/base-layout.astro';
+import translations from '@locales/es.json';
+import { ArrowDown } from '@lucide/astro';
+
+const t = translations;
+const seoKeywords = `${t.seo.keywords}, ${t.site.name}`;
+---
+
+<BaseLayout title={t.nav.home} description={t.site.description} keywords={seoKeywords}>
+  <!-- Hero Section -->
+  <section class="relative h-[600px] md:h-[700px] flex items-center overflow-hidden">
+    <!-- Background Image with overlay -->
+    <div class="absolute inset-0 -z-10">
+      <img src="/hero.jpg" alt={t.home.hero.heroAlt} class="w-full h-full object-cover" />
+      <div class="absolute inset-0 bg-gradient-to-r from-primary/90 via-primary/70 to-primary/50">
+      </div>
+    </div>
+
+    <div class="container-custom px-4 md:px-6 z-10">
+      <div class="max-w-3xl text-white animate-fade-in">
+        <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
+          {t.home.hero.title}
+        </h1>
+        <p class="text-xl md:text-2xl mb-8 text-white/90">
+          {t.home.hero.subtitle}
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <UiButton variant="accent" href="/contacto" class="text-lg">
+            {t.home.hero.ctaPrimary}
+          </UiButton>
+          <UiButton
+            variant="secondary"
+            href="/servicios"
+            class="text-lg bg-white/20 hover:bg-white/30 backdrop-blur-sm border-2 border-white/50"
+          >
+            {t.home.hero.ctaSecondary}
+          </UiButton>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+      <ArrowDown class="w-6 h-6 text-white" />
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="section-padding bg-white">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-4xl font-bold text-neutral-dark mb-6">{t.home.about.title}</h2>
+        <p class="text-lg text-secondary leading-relaxed mb-4">
+          {t.home.about.mission}
+        </p>
+        <p class="text-base text-secondary leading-relaxed">
+          {t.home.about.values}
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Services Section -->
+  <section class="section-padding bg-gray-50">
+    <div class="container-custom">
+      <h2 class="text-4xl font-bold text-center text-neutral-dark mb-12">{t.home.servicesTitle}</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <ServiceCard
+          title={t.services.list.bathrooms.title}
+          description={t.services.list.bathrooms.description}
+          icon="wrench"
+        />
+        <ServiceCard
+          title={t.services.list.kitchens.title}
+          description={t.services.list.kitchens.description}
+          icon="home"
+        />
+        <ServiceCard
+          title={t.services.list.integral.title}
+          description={t.services.list.integral.description}
+          icon="home"
+        />
+        <ServiceCard
+          title={t.services.list.painting.title}
+          description={t.services.list.painting.description}
+          icon="paint"
+        />
+      </div>
+      <div class="text-center mt-10">
+        <UiButton variant="primary" href="/servicios" class="text-lg">
+          Ver Todos los Servicios
+        </UiButton>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="section-padding bg-white">
+    <div class="container-custom">
+      <h2 class="text-4xl font-bold text-center text-neutral-dark mb-12">
+        {t.home.testimonialsTitle}
+      </h2>
+      <TestimonialCarousel />
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="section-padding bg-gradient-to-r from-primary to-primary-dark text-white">
+    <div class="container-custom">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="text-4xl font-bold mb-6">{t.home.ctaSection.title}</h2>
+        <p class="text-xl mb-8 text-white/90">
+          {t.home.ctaSection.description}
+        </p>
+        <UiButton variant="accent" href="/contacto" class="text-lg">
+          {t.home.ctaSection.cta}
+        </UiButton>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 1s ease-out;
+  }
+</style>

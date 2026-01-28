@@ -1,0 +1,113 @@
+---
+import ContactForm from '@components/contact-form.astro';
+import BaseLayout from '@layouts/base-layout.astro';
+import translations from '@locales/es.json';
+import { Mail, Phone, Clock, ChevronRight } from '@lucide/astro';
+
+const t = translations;
+---
+
+<BaseLayout
+  title={t.nav.contact}
+  description={t.contact.subtitle}
+  keywords={`${t.seo.keywords}, contacto reformas Madrid`}
+>
+  <!-- Header Section -->
+  <section
+    class="section-padding h-[400px] bg-gradient-to-r from-primary to-primary-dark text-white flex items-center"
+  >
+    <div class="container-custom text-center">
+      <h1 class="text-5xl md:text-6xl font-bold mb-6">{t.contact.title}</h1>
+      <p class="text-xl max-w-3xl mx-auto text-white/90">
+        {t.contact.subtitle}
+      </p>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="section-padding bg-white">
+    <div class="container-custom">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <!-- Contact Form -->
+        <div class="card">
+          <h2 class="text-3xl font-bold text-neutral-dark mb-6">Envíanos un Mensaje</h2>
+          <ContactForm />
+        </div>
+
+        <!-- Contact Information -->
+        <div class="space-y-6">
+          <div class="card">
+            <h2 class="text-2xl font-bold text-neutral-dark mb-6">{t.contact.info.title}</h2>
+            <div class="space-y-5">
+              <!-- Email -->
+              <div
+                class="flex items-center gap-4 p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
+              >
+                <div
+                  class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0"
+                >
+                  <Mail class="w-6 h-6 text-primary" />
+                </div>
+                <div>
+                  <p class="text-sm text-secondary mb-1">Email</p>
+                  <p class="text-neutral-dark font-medium">{t.contact.info.email}</p>
+                </div>
+              </div>
+
+              <!-- Phone -->
+              <div
+                class="flex items-center gap-4 p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
+              >
+                <div
+                  class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0"
+                >
+                  <Phone class="w-6 h-6 text-primary" />
+                </div>
+                <div>
+                  <p class="text-sm text-secondary mb-1">Teléfono</p>
+                  <p class="text-neutral-dark font-medium">{t.contact.info.phone}</p>
+                </div>
+              </div>
+
+              <!-- Hours -->
+              <div
+                class="flex items-center gap-4 p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
+              >
+                <div
+                  class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0"
+                >
+                  <Clock class="w-6 h-6 text-primary" />
+                </div>
+                <div>
+                  <p class="text-sm text-secondary mb-1">{t.contact.info.hoursLabel}</p>
+                  <p class="text-neutral-dark font-medium">{t.contact.info.hours}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick Links -->
+          <div class="card bg-gradient-to-br from-primary/5 to-accent/5 border border-primary/10">
+            <h3 class="text-xl font-bold text-neutral-dark mb-4">Enlaces Rápidos</h3>
+            <div class="space-y-2">
+              <a
+                href="/servicios"
+                class="flex items-center gap-3 p-3 rounded-lg hover:bg-white/80 transition-all group"
+              >
+                <ChevronRight class="w-5 h-5 text-primary group-hover:scale-110 transition-transform" />
+                <span class="text-neutral-dark font-medium">Ver Nuestros Servicios</span>
+              </a>
+              <a
+                href="/proyectos"
+                class="flex items-center gap-3 p-3 rounded-lg hover:bg-white/80 transition-all group"
+              >
+                <ChevronRight class="w-5 h-5 text-primary group-hover:scale-110 transition-transform" />
+                <span class="text-neutral-dark font-medium">Explorar Proyectos</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
