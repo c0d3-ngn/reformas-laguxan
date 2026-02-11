@@ -1,0 +1,141 @@
+---
+import { useTranslations } from "@utils/i18n"
+import { Menu, X, House, Info, Briefcase, FolderOpen, Mail, ChevronRight, MessageCircle } from "@lucide/astro"
+
+interface Props {
+	links: Array<{ text: string; href: string }>
+}
+
+const { links } = Astro.props
+const t = useTranslations()
+---
+
+<header class="sticky top-0 z-50 w-full bg-white shadow-sm">
+	<nav class="container mx-auto px-6 py-4">
+		<div class="flex items-center justify-between">
+			<slot name="logo" />
+
+			<slot name="desktop" />
+
+			<button
+				id="mobile-menu-btn"
+				class="md:hidden text-neutral-dark hover:text-primary flex h-10 w-10 items-center justify-center rounded-lg transition-colors focus:outline-none"
+				aria-label={t("nav.menu.open")}
+			>
+				<Menu class="menu-icon h-6 w-6" />
+				<X class="close-icon hidden h-6 w-6" />
+			</button>
+		</div>
+	</nav>
+
+	<div
+		id="mobile-backdrop"
+		class="mobile-backdrop fixed inset-0 z-40 hidden bg-black/50 opacity-0 backdrop-blur-sm transition-opacity duration-300"
+	>
+	</div>
+
+	<div
+		id="mobile-drawer"
+		class="mobile-drawer fixed inset-y-0 right-0 z-50 w-[320px] max-w-[85vw] translate-x-full overflow-y-auto bg-white shadow-2xl transition-transform duration-300"
+	>
+		<div class="flex items-center justify-between border-b border-gray-100 px-6 py-4">
+			<span class="text-lg font-bold text-gray-900">{t("nav.mobile.menu")}</span>
+			<button
+				id="mobile-menu-close"
+				class="flex h-8 w-8 items-center justify-center rounded-lg text-gray-500 transition-colors hover:text-gray-700"
+				aria-label={t("nav.mobile.close")}
+			>
+				<X class="h-5 w-5" />
+			</button>
+		</div>
+
+		<nav class="px-6 py-6">
+			<div class="flex flex-col space-y-1">
+				<a
+					href={links[0].href}
+					class="mobile-nav-link group hover:bg-primary/10 hover:text-primary flex items-center gap-3 rounded-xl px-4 py-4 text-lg font-medium transition-all duration-200"
+				>
+					<span
+						class="group-hover:bg-primary flex h-10 w-10 items-center justify-center rounded-lg bg-gray-100 text-gray-600 transition-all group-hover:text-white"
+					>
+						<House class="h-5 w-5" />
+					</span>
+					<span class="group-hover:text-primary text-gray-700 transition-colors">{links[0].text}</span>
+					<ChevronRight
+						class="group-hover:text-primary ml-auto h-5 w-5 text-gray-400 transition-transform group-hover:translate-x-1"
+					/>
+				</a>
+				<a
+					href={links[1].href}
+					class="mobile-nav-link group hover:bg-primary/10 hover:text-primary flex items-center gap-3 rounded-xl px-4 py-4 text-lg font-medium transition-all duration-200"
+				>
+					<span
+						class="group-hover:bg-primary flex h-10 w-10 items-center justify-center rounded-lg bg-gray-100 text-gray-600 transition-all group-hover:text-white"
+					>
+						<Info class="h-5 w-5" />
+					</span>
+					<span class="group-hover:text-primary text-gray-700 transition-colors">{links[1].text}</span>
+					<ChevronRight
+						class="group-hover:text-primary ml-auto h-5 w-5 text-gray-400 transition-transform group-hover:translate-x-1"
+					/>
+				</a>
+				<a
+					href={links[2].href}
+					class="mobile-nav-link group hover:bg-primary/10 hover:text-primary flex items-center gap-3 rounded-xl px-4 py-4 text-lg font-medium transition-all duration-200"
+				>
+					<span
+						class="group-hover:bg-primary flex h-10 w-10 items-center justify-center rounded-lg bg-gray-100 text-gray-600 transition-all group-hover:text-white"
+					>
+						<Briefcase class="h-5 w-5" />
+					</span>
+					<span class="group-hover:text-primary text-gray-700 transition-colors">{links[2].text}</span>
+					<ChevronRight
+						class="group-hover:text-primary ml-auto h-5 w-5 text-gray-400 transition-transform group-hover:translate-x-1"
+					/>
+				</a>
+				<a
+					href={links[3].href}
+					class="mobile-nav-link group hover:bg-primary/10 hover:text-primary flex items-center gap-3 rounded-xl px-4 py-4 text-lg font-medium transition-all duration-200"
+				>
+					<span
+						class="group-hover:bg-primary flex h-10 w-10 items-center justify-center rounded-lg bg-gray-100 text-gray-600 transition-all group-hover:text-white"
+					>
+						<FolderOpen class="h-5 w-5" />
+					</span>
+					<span class="group-hover:text-primary text-gray-700 transition-colors">{links[3].text}</span>
+					<ChevronRight
+						class="group-hover:text-primary ml-auto h-5 w-5 text-gray-400 transition-transform group-hover:translate-x-1"
+					/>
+				</a>
+				<a
+					href={links[4].href}
+					class="mobile-nav-link group hover:bg-primary/10 hover:text-primary flex items-center gap-3 rounded-xl px-4 py-4 text-lg font-medium transition-all duration-200"
+				>
+					<span
+						class="group-hover:bg-primary flex h-10 w-10 items-center justify-center rounded-lg bg-gray-100 text-gray-600 transition-all group-hover:text-white"
+					>
+						<Mail class="h-5 w-5" />
+					</span>
+					<span class="group-hover:text-primary text-gray-700 transition-colors">{links[4].text}</span>
+					<ChevronRight
+						class="group-hover:text-primary ml-auto h-5 w-5 text-gray-400 transition-transform group-hover:translate-x-1"
+					/>
+				</a>
+			</div>
+		</nav>
+
+		<div class="border-t border-gray-100 p-6">
+			<a
+				href="/contact"
+				class="bg-primary hover:bg-primary-light flex w-full items-center justify-center gap-2 rounded-xl px-6 py-4 font-semibold text-white shadow-lg transition-all hover:shadow-xl"
+			>
+				<MessageCircle class="h-5 w-5" />
+				{t("nav.mobile.request_budget")}
+			</a>
+		</div>
+	</div>
+</header>
+
+<script>
+	import "@scripts/mobile-menu"
+</script>

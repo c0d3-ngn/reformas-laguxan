@@ -1,0 +1,11 @@
+---
+import ServicesGrid from "@components/services/services-grid.astro"
+import Layout from "@layouts/Layout.astro"
+import { useTranslations } from "@utils/i18n"
+
+const t = useTranslations()
+---
+
+<Layout title={t("nav.services")}>
+	<ServicesGrid />
+</Layout>

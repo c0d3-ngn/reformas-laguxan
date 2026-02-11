@@ -1,0 +1,11 @@
+---
+import AboutContent from "@components/about/about-content.astro"
+import Layout from "@layouts/Layout.astro"
+import { useTranslations } from "@utils/i18n"
+
+const t = useTranslations()
+---
+
+<Layout title={t("nav.about")}>
+	<AboutContent />
+</Layout>

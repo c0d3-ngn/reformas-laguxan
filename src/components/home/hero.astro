@@ -1,0 +1,43 @@
+---
+import { ASSETS } from "@utils/assets"
+import { useTranslations } from "@utils/i18n"
+import { ROUTES } from "@utils/routes"
+
+const t = useTranslations()
+---
+
+<section class="relative flex h-150 items-center justify-center overflow-hidden md:h-175">
+	<img
+		src={ASSETS.HOME.HERO}
+		alt=""
+		class="absolute inset-0 h-full w-full object-cover"
+		fetchpriority="high"
+		loading="eager"
+		decoding="async"
+		aria-hidden="true"
+	/>
+	<div class="bg-neutral-dark/70 absolute inset-0"></div>
+
+	<div class="relative z-10 mx-auto max-w-4xl px-4 text-center text-white">
+		<h1 class="mb-6 text-4xl font-bold tracking-tight md:text-6xl">
+			{t("hero.title.part1")}
+			<span class="text-blue-400">{t("hero.title.part2")}</span>
+			{t("hero.title.part3")}
+		</h1>
+		<p class="mx-auto mb-8 max-w-2xl text-lg text-gray-200 md:text-xl">
+			{t("hero.subtitle")}
+		</p>
+		<div class="flex flex-col justify-center gap-4 sm:flex-row">
+			<a
+				href={ROUTES.CONTACT}
+				class="bg-primary hover:bg-primary-light rounded-md px-8 py-3 font-semibold text-white shadow-lg transition hover:scale-105 active:scale-95"
+				>{t("hero.cta.primary")}</a
+			>
+			<a
+				href={ROUTES.PROJECTS}
+				class="text-neutral-dark rounded-md bg-white px-8 py-3 font-semibold shadow-lg transition hover:scale-105 hover:bg-gray-100 active:scale-95"
+				>{t("hero.cta.secondary")}</a
+			>
+		</div>
+	</div>
+</section>

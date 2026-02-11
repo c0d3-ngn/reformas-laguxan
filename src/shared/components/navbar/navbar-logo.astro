@@ -1,0 +1,27 @@
+---
+import { ASSETS } from "@utils/assets"
+import { ROUTES } from "@utils/routes"
+import { useTranslations } from "@utils/i18n"
+const t = useTranslations()
+---
+
+<a href={ROUTES.HOME} class="group flex items-center gap-2" aria-label={t("nav.logo.aria")}>
+	<!-- Mobile Logo (Simple) -->
+	<img
+		src={ASSETS.LOGOS.MONOGRAM}
+		alt={t("nav.logo.alt")}
+		class="h-10 w-auto object-contain transition-all duration-300 md:hidden"
+		loading="eager"
+		width="40"
+		height="40"
+	/>
+	<!-- Desktop Logo (Full) -->
+	<img
+		src={ASSETS.LOGOS.FULL}
+		alt={t("nav.logo.full_alt")}
+		class="hidden h-14 w-auto object-contain transition-all duration-300 md:block"
+		loading="eager"
+		width="280"
+		height="70"
+	/>
+</a>

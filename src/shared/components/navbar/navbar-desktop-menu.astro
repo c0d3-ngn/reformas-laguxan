@@ -1,0 +1,23 @@
+---
+import { useTranslations } from "@utils/i18n"
+
+interface Props {
+	links: Array<{ text: string; href: string }>
+}
+
+const { links } = Astro.props
+
+const t = useTranslations()
+---
+
+<div class="hidden md:flex md:items-center md:space-x-8">
+	<div class="flex space-x-6">
+		{
+			links.map(link => (
+				<a href={link.href} class="text-neutral-dark hover:text-primary font-medium transition-colors">
+					{link.text}
+				</a>
+			))
+		}
+	</div>
+</div>

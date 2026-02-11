@@ -1,0 +1,48 @@
+@import "tailwindcss";
+@plugin "tailwindcss-animate";
+
+@font-face {
+	font-family: "Inter";
+	src: url("/fonts/Inter.ttf") format("truetype");
+	font-weight: 100 900;
+	font-display: swap;
+	font-style: normal;
+}
+
+@theme {
+	/* Colores corporativos */
+	--color-primary: #1e3a8a;
+	--color-primary-light: #2563eb;
+	--color-primary-dark: #172554;
+
+	--color-neutral-custom: #4b5563;
+	--color-neutral-light: #f3f4f6;
+	--color-neutral-dark: #1f2937;
+
+	--color-accent-green: #10b981;
+
+	/* Fuente */
+	--font-sans: "Inter", system-ui, sans-serif;
+}
+
+/* Opcional: Para que Alpine funcione bien con x-cloak */
+[x-cloak] {
+	display: none !important;
+}
+
+/* Prevenir overflow durante view transitions */
+html {
+	overflow-x: hidden;
+}
+
+/* Asegurar que las animaciones no causen overflow */
+.animate-in {
+	--tw-enter-translate-x: 0;
+	--tw-enter-translate-y: 0;
+}
+
+/* Fix para header durante transiciones */
+header {
+	width: 100vw;
+	max-width: 100%;
+}

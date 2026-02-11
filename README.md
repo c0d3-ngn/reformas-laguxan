@@ -1,46 +1,103 @@
-# Astro Starter Kit: Basics
+# Construction & Renovation Corporate Website
 
-```sh
-pnpm create astro@latest -- --template basics
+Professional corporate website built with Astro, featuring modern design, performance optimization, and SEO best
+practices for the construction industry.
+
+## Features
+
+- **Modern & Responsive Design**: Mobile-first approach with Tailwind CSS v4
+- **View Transitions**: Smooth page navigation powered by Astro's ClientRouter
+- **Project Portfolio**: Dynamic project gallery with infinite scroll and modal previews
+- **Performance Optimized**: LCP, CLS, and INP metrics optimized for Core Web Vitals
+- **SEO Ready**: Meta tags, structured data, and semantic HTML
+- **Internationalization**: i18n support ready for multi-language expansion
+- **Legal Pages**: Disclaimer, Privacy Policy, and Terms of Service included
+
+## Tech Stack
+
+- **Framework**: Astro 5.0
+- **Styling**: Tailwind CSS v4
+- **Icons**: Lucide Astro
+- **Animations**: tailwindcss-animate
+- **Build**: Vite
+
+## Project Structure
+
+```
+src/
+├── components/           # Reusable UI components
+│   ├── home/           # Homepage sections (hero, pillars)
+│   ├── services/       # Services grid
+│   └── contact/       # Contact components
+├── layouts/            # Page layouts
+├── pages/              # Route-based pages
+├── shared/             # Shared components and scripts
+│   ├── components/    # Modal, Navbar, Footer components
+│   └── scripts/        # TypeScript logic (mobile menu, projects)
+├── styles/             # Global styles
+├── utils/              # Helpers (i18n, assets, routes)
+├── data/               # JSON data (projects)
+└── locales/            # Translation files
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Commands
 
-## 🚀 Project Structure
+| Command        | Action                               |
+| :------------- | :----------------------------------- |
+| `pnpm install` | Install dependencies                 |
+| `pnpm dev`     | Start dev server at `localhost:4321` |
+| `pnpm build`   | Build for production in `./dist/`    |
+| `pnpm preview` | Preview production build locally     |
+| `pnpm format`  | Format code with Prettier            |
+| `pnpm lint`    | Check code formatting                |
 
-Inside of your Astro project, you'll see the following folders and files:
+## Content Management
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
+- **Projects**: Edit `src/data/projects.json` to add/modify portfolio items
+- **Translations**: Modify `src/locales/es.json` for text content
+- **Services**: Update service descriptions in the locales file using `services.N` keys
+
+## SEO Optimization
+
+This project includes comprehensive SEO features:
+
+- **Semantic HTML**: Proper heading hierarchy (h1 → h2 → h3)
+- **Meta Tags**: Title, description, Open Graph, and Twitter cards
+- **Structured Data**: JSON-LD for organization and local business
+- **Accessibility**: ARIA labels, semantic landmarks, keyboard navigation
+- **Performance**: Optimized images, lazy loading, minimal JavaScript
+- **Sitemap**: Auto-generated for search engines
+
+### Local Business Schema
+
+The website includes JSON-LD structured data for local business:
+
+```json
+{
+	"@context": "https://schema.org",
+	"@type": "LocalBusiness",
+	"name": "Company Name",
+	"image": "https://example.com/logo.png",
+	"address": {
+		"@type": "PostalAddress",
+		"addressLocality": "Madrid",
+		"addressCountry": "ES"
+	},
+	"areaServed": "Madrid, Spain",
+	"priceRange": "€€€"
+}
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+## Deployment
 
-## 🧞 Commands
+The site builds to static HTML/CSS/JS with zero runtime overhead. Deploy to:
 
-All commands are run from the root of the project, from a terminal:
+- Vercel
+- Netlify
+- Cloudflare Pages
+- Any static hosting
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `pnpm install`             | Installs dependencies                            |
-| `pnpm dev`             | Starts local dev server at `localhost:4321`      |
-| `pnpm build`           | Build your production site to `./dist/`          |
-| `pnpm preview`         | Preview your build locally, before deploying     |
-| `pnpm astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `pnpm astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+```bash
+pnpm build
+# Upload dist/ folder to your host
+```

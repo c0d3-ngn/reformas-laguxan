@@ -1,0 +1,10 @@
+# https://developers.google.com/search/docs/advanced/robots/create-robots-txt
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://reformaslaguxan.es/sitemap-index.xml
+
+# Disallow admin/private areas
+Disallow: /dist/
+Disallow: /node_modules/

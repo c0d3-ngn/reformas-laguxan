@@ -1,0 +1,22 @@
+---
+import NavbarLogo from "@components/navbar/navbar-logo.astro"
+import NavbarDesktopMenu from "@components/navbar/navbar-desktop-menu.astro"
+import NavbarMobileMenu from "@components/navbar/navbar-mobile-menu.astro"
+import { useTranslations } from "@utils/i18n"
+import { ROUTES } from "@utils/routes"
+
+const t = useTranslations()
+
+const links = [
+	{ text: t("nav.home"), href: ROUTES.HOME },
+	{ text: t("nav.about"), href: ROUTES.ABOUT },
+	{ text: t("nav.services"), href: ROUTES.SERVICES },
+	{ text: t("nav.projects"), href: ROUTES.PROJECTS },
+	{ text: t("nav.contact"), href: ROUTES.CONTACT },
+]
+---
+
+<NavbarMobileMenu links={links}>
+	<NavbarLogo slot="logo" />
+	<NavbarDesktopMenu links={links} slot="desktop" />
+</NavbarMobileMenu>

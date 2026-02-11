@@ -1,0 +1,31 @@
+---
+import { ASSETS } from "@utils/assets"
+import { Clock } from "@lucide/astro"
+import { useTranslations } from "@utils/i18n"
+import { ROUTES } from "@utils/routes"
+
+const t = useTranslations()
+---
+
+<div class="lg:col-span-1">
+	<h3 class="mb-6 flex items-center gap-2 text-lg font-bold text-white">
+		<Clock class="text-primary h-5 w-5" />
+		Horario
+	</h3>
+
+	<ul class="space-y-4">
+		<li>
+			<p class="text-sm text-gray-400">{t("footer.schedule.days")}<br />{t("footer.schedule.hours")}</p>
+		</li>
+	</ul>
+
+	<!-- Logo -->
+	<a href={ROUTES.HOME} class="mt-8 inline-block" aria-label={t("footer.aria.home")}>
+		<img
+			src={ASSETS.LOGOS.MONOGRAM}
+			alt={t("footer.logo.alt")}
+			class="h-12 w-auto opacity-70 transition-opacity hover:opacity-100"
+			loading="lazy"
+		/>
+	</a>
+</div>

@@ -1,14 +1,29 @@
 {
-  "name": "interstellar-ice",
-  "type": "module",
-  "version": "0.0.1",
-  "scripts": {
-    "dev": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview",
-    "astro": "astro"
-  },
-  "dependencies": {
-    "astro": "^5.16.11"
-  }
+	"name": "reformas-laguxan",
+	"type": "module",
+	"version": "0.0.1",
+	"scripts": {
+		"dev": "astro dev",
+		"build": "astro build",
+		"preview": "astro preview",
+		"astro": "astro",
+		"format": "prettier --write .",
+		"format:check": "prettier --check .",
+		"lint": "prettier --check ."
+	},
+	"dependencies": {
+		"@astrojs/sitemap": "^3.7.0",
+		"@astrojs/tailwind": "^6.0.2",
+		"@lucide/astro": "^0.563.0",
+		"@tailwindcss/postcss": "^4.1.18",
+		"@tailwindcss/vite": "^4.1.18",
+		"astro": "^5.16.11",
+		"tailwindcss": "4",
+		"tailwindcss-animate": "^1.0.7"
+	},
+	"devDependencies": {
+		"prettier": "*",
+		"prettier-plugin-astro": "*",
+		"prettier-plugin-tailwindcss": "*"
+	}
 }
