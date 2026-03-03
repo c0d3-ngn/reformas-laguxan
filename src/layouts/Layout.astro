@@ -7,8 +7,8 @@ import { useTranslations } from "@utils/i18n"
 import { ClientRouter } from "astro:transitions"
 
 interface Props {
-	title: string
-	description?: string
+  title: string
+  description?: string
 }
 
 const t = useTranslations()
@@ -19,71 +19,64 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site)
 ---
 
 <!doctype html>
-<html lang="es" class="scroll-smooth">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-		<meta name="generator" content={Astro.generator} />
-		<meta name="description" content={description} />
+<html lang="es" class="scroll-smooth" data-theme="reformas">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description} />
 
-		<!-- Canonical URL -->
-		<link rel="canonical" href={canonicalURL} />
+    <link rel="canonical" href={canonicalURL} />
 
-		<!-- Open Graph -->
-		<meta property="og:type" content="website" />
-		<meta property="og:title" content={title} />
-		<meta property="og:description" content={description} />
-		<meta property="og:image" content={ASSETS.HOME.HERO} />
-		<meta property="og:url" content={canonicalURL} />
-		<meta property="og:site_name" content={t("meta.title")} />
-		<meta property="og:locale" content="es_ES" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ASSETS.HOME.HERO} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:site_name" content={t("meta.title")} />
+    <meta property="og:locale" content="es_ES" />
 
-		<!-- Twitter Card -->
-		<meta name="twitter:card" content="summary_large_image" />
-		<meta name="twitter:title" content={title} />
-		<meta name="twitter:description" content={description} />
-		<meta name="twitter:image" content={ASSETS.HOME.HERO} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ASSETS.HOME.HERO} />
 
-		<!-- Favicons & Manifest -->
-		<link rel="icon" type="image/svg+xml" href={ASSETS.LOGOS.MONOGRAM} />
-		<link rel="apple-touch-icon" href={ASSETS.LOGOS.MONOGRAM} />
-		<link rel="manifest" href={ASSETS.MANIFEST} />
+    <link rel="icon" type="image/svg+xml" href={ASSETS.LOGOS.MONOGRAM} />
+    <link rel="apple-touch-icon" href={ASSETS.LOGOS.MONOGRAM} />
+    <link rel="manifest" href={ASSETS.MANIFEST} />
 
-		<link rel="preload" as="image" href="/images/hero.jpg" fetchpriority="high" />
+    <title>{title} | {t("meta.title")}</title>
 
-		<title>{title} | {t("meta.title")}</title>
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "ConstructionBusiness",
+        name: t("meta.title").replace(" - Expertos en Construcción y Reformas", ""),
+        image: ASSETS.HOME.HERO,
+        url: canonicalURL.origin,
+        address: {
+          "@type": "PostalAddress",
+          addressLocality: "Madrid",
+          addressRegion: "Community of Madrid",
+          addressCountry: "ES",
+        },
+        areaServed: {
+          "@type": "Place",
+          name: "Madrid y alrededores",
+        },
+        priceRange: "€€€",
+        sameAs: ["https://www.facebook.com/people/Reformas-y-Construcciones-Laguxan-SL/100047069718722"],
+      })}
+    />
 
-		<!-- Organization Schema -->
-		<script
-			type="application/ld+json"
-			set:html={JSON.stringify({
-				"@context": "https://schema.org",
-				"@type": "ConstructionBusiness",
-				name: t("meta.title").replace(" - Expertos en Construcción y Reformas", ""),
-				image: ASSETS.HOME.HERO,
-				url: canonicalURL.origin,
-				address: {
-					"@type": "PostalAddress",
-					addressLocality: "Madrid",
-					addressRegion: "Community of Madrid",
-					addressCountry: "ES",
-				},
-				areaServed: {
-					"@type": "Place",
-					name: "Madrid y alrededores",
-				},
-				priceRange: "€€€",
-				sameAs: ["https://www.facebook.com/people/Reformas-y-Construcciones-Laguxan-SL/100047069718722"],
-			})}
-		/>
-
-		<ClientRouter />
-	</head>
-	<body class="text-neutral-dark flex min-h-screen flex-col bg-white font-sans antialiased">
-		<Navbar />
-		<main class="grow">
-			<slot />
-		</main>
-		<Footer />
-	</body>
+    <ClientRouter />
+  </head>
+  <body class="text-neutral-dark flex min-h-screen flex-col bg-white font-sans antialiased">
+    <Navbar />
+    <main class="grow">
+      <slot />
+    </main>
+    <Footer />
+  </body>
 </html>

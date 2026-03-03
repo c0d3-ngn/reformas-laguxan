@@ -1,89 +1,52 @@
 ---
+import { ChevronLeft, ChevronRight } from "@lucide/astro"
 import { useTranslations } from "@utils/i18n"
 
 const t = useTranslations()
 ---
 
-<div
-	id="project-modal"
-	class="fixed inset-0 z-50 hidden overflow-y-auto"
-	aria-labelledby="modal-title"
-	role="dialog"
-	aria-modal="true"
->
-	<div id="modal-backdrop" class="fixed inset-0 bg-black/70 backdrop-blur-sm transition-opacity"></div>
+<dialog id="project-modal" class="modal modal-bottom sm:modal-middle">
+  <div class="modal-box flex max-h-[90vh] max-w-4xl flex-col overflow-hidden bg-white text-gray-900">
+    <div class="relative shrink-0">
+      <div id="carousel-container" class="carousel carousel-center h-64 w-full shrink-0 gap-4 bg-gray-200 md:h-80">
+        <div id="carousel-images" class="carousel-item h-full w-full">
+          <img class="h-full w-full rounded-lg bg-gray-200 object-contain" />
+        </div>
+      </div>
 
-	<div class="flex min-h-screen items-center justify-center p-4 text-center sm:p-0">
-		<div
-			class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-4xl"
-		>
-			<!-- Close button -->
-			<div class="absolute top-0 right-0 z-10 hidden pt-4 pr-4 sm:block">
-				<button
-					id="modal-close-btn"
-					type="button"
-					class="focus:ring-primary rounded-md bg-white text-gray-400 hover:text-gray-500 focus:ring-2 focus:ring-offset-2 focus:outline-none"
-				>
-					<span class="sr-only">{t("modal.close")}</span>
-					<svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-						<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
-					</svg>
-				</button>
-			</div>
+      <button
+        id="carousel-prev"
+        class="btn btn-circle btn-sm absolute top-1/2 left-2 z-10 hidden -translate-y-1/2 bg-black/50 text-white hover:bg-black/70 md:flex [&_svg]:mx-auto"
+        aria-label={t("modal.prev.aria")}
+      >
+        <ChevronLeft size={24} />
+      </button>
+      <button
+        id="carousel-next"
+        class="btn btn-circle btn-sm absolute top-1/2 right-2 z-10 hidden -translate-y-1/2 bg-black/50 text-white hover:bg-black/70 md:flex [&_svg]:mx-auto"
+        aria-label={t("modal.next.aria")}
+      >
+        <ChevronRight size={24} />
+      </button>
+    </div>
 
-			<div class="px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-				<div class="flex-col sm:flex sm:items-start">
-					<!-- Carousel -->
-					<div class="group relative mb-6 h-64 w-full overflow-hidden rounded-lg bg-gray-200 md:h-96">
-						<div id="carousel-images" class="relative h-full w-full">
-							<!-- Images injected via JS -->
-						</div>
+    <div class="min-h-0 flex-1 overflow-y-auto py-4" style="max-height: 40vh;">
+      <h3 id="modal-title" class="text-2xl font-bold text-gray-900"></h3>
+      <div class="mt-2 mb-4 flex items-center gap-4 text-sm text-gray-500">
+        <span id="modal-location"></span>
+        <span>-</span>
+        <span id="modal-year"></span>
+      </div>
+      <p id="modal-description" class="text-gray-600"></p>
+    </div>
 
-						<!-- Carousel Controls -->
-						<button
-							id="carousel-prev"
-							class="absolute top-1/2 left-2 -translate-y-1/2 rounded-full bg-black/50 p-2 text-white transition hover:bg-black/70 cursor-pointer"
-							aria-label={t("modal.prev.aria")}
-						>
-							<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-								<path d="M15 18l-6-6 6-6"/>
-							</svg>
-						</button>
-						<button
-							id="carousel-next"
-							class="absolute top-1/2 right-2 -translate-y-1/2 rounded-full bg-black/50 p-2 text-white transition hover:bg-black/70 cursor-pointer"
-							aria-label={t("modal.next.aria")}
-						>
-							<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-								<path d="M9 18l6-6-6-6"/>
-							</svg>
-						</button>
-					</div>
-
-					<!-- Content -->
-					<div class="w-full">
-						<h3 id="modal-title" class="mb-2 text-2xl leading-6 font-semibold text-gray-900"></h3>
-						<div class="mb-4 flex items-center gap-4 text-sm text-gray-500">
-							<span id="modal-location"></span>
-							<span>•</span>
-							<span id="modal-year"></span>
-						</div>
-						<div class="mt-2">
-							<p id="modal-description" class="text-gray-600"></p>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<div class="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
-				<button
-					id="modal-close"
-					type="button"
-					class="bg-neutral-dark inline-flex w-full justify-center rounded-md px-3 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-black sm:ml-3 sm:w-auto"
-				>
-					{t("modal.close")}
-				</button>
-			</div>
-		</div>
-	</div>
-</div>
+    <div class="modal-action mt-4">
+      <form method="dialog">
+        <button class="btn btn-neutral">{t("modal.close")}</button>
+      </form>
+    </div>
+  </div>
+  <form method="dialog" class="modal-backdrop bg-black/70 backdrop-blur-sm">
+    <button>close</button>
+  </form>
+</dialog>

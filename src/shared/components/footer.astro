@@ -1,59 +1,98 @@
 ---
-import FooterAbout from "@components/footer/footer-about.astro"
-import FooterContact from "@components/footer/footer-contact.astro"
-import FooterLegal from "@components/footer/footer-legal.astro"
-import FooterLinks from "@components/footer/footer-links.astro"
+import { footerServices } from "@data/services"
 import { ArrowRight, ShieldCheck } from "@lucide/astro"
+import { ASSETS } from "@utils/assets"
 import { useTranslations } from "@utils/i18n"
 import { ROUTES } from "@utils/routes"
 
 const t = useTranslations()
 const year = new Date().getFullYear()
+
+const legalLinks = [
+  { name: t("footer.links.legal"), href: ROUTES.LEGAL },
+  { name: t("footer.links.privacy"), href: ROUTES.PRIVACY },
+]
 ---
 
-<footer class="to-neutral-dark bg-linear-to-b from-gray-900 text-gray-300">
-	<!-- CTA Banner -->
-	<div class="bg-primary/10 border-b border-gray-800">
-		<div class="container mx-auto px-6 py-8">
-			<div class="flex flex-col items-center justify-between gap-4 md:flex-row">
-				<div class="text-center md:text-left">
-					<h3 class="text-xl font-bold text-white">{t("footer.cta.title")}</h3>
-					<p class="text-gray-400">{t("footer.cta.subtitle")}</p>
-				</div>
-				<a
-					href={ROUTES.CONTACT}
-					class="bg-primary hover:bg-primary-light inline-flex items-center gap-2 rounded-lg px-6 py-3 font-semibold text-white shadow-lg transition hover:-translate-y-0.5"
-				>
-					<span>{t("footer.cta.button")}</span>
-					<ArrowRight class="h-5 w-5" />
-				</a>
-			</div>
-		</div>
-	</div>
+<div class="to-neutral-dark bg-linear-to-b from-gray-900 text-gray-300">
+  <div class="container mx-auto px-6 py-8">
+    <div class="flex flex-col items-center justify-between gap-4 md:flex-row">
+      <div class="text-center md:text-left">
+        <h3 class="text-xl font-bold text-white">{t("footer.cta.title")}</h3>
+        <p class="text-gray-400">{t("footer.cta.subtitle")}</p>
+      </div>
+      <a href={ROUTES.CONTACT} class="btn btn-primary inline-flex items-center gap-2 shadow-lg">
+        <span>{t("footer.cta.button")}</span>
+        <ArrowRight class="h-5 w-5" />
+      </a>
+    </div>
+  </div>
+</div>
 
-	<!-- Main Footer Content -->
-	<div class="container mx-auto px-6 py-16">
-		<div class="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-4">
-			<FooterAbout />
-			<FooterLinks />
-			<FooterLegal />
-			<FooterContact />
-		</div>
-	</div>
+<footer class="footer sm:footer-horizontal to-neutral-dark bg-linear-to-b from-gray-900 p-10 text-gray-300">
+  <aside>
+    <a href="/" class="mb-4 inline-block">
+      <img src={ASSETS.LOGOS.MONOGRAM} alt={t("footer.logo.alt")} class="h-12 w-auto" loading="lazy" />
+    </a>
+    <p class="max-w-xs text-sm text-gray-300">
+      {t("footer.about")}
+    </p>
+    <div class="mt-4 flex gap-3">
+      <a
+        target="_blank"
+        href="https://www.facebook.com/people/Reformas-y-Construcciones-Laguxan-SL/100047069718722"
+        class="btn btn-ghost btn-circle hover:bg-primary bg-gray-800 text-gray-300 hover:text-white"
+        aria-label={t("footer.social.facebook")}
+      >
+        <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+          <path
+            d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"
+          ></path>
+        </svg>
+      </a>
+    </div>
+  </aside>
 
-	<!-- Bottom Bar -->
-	<div class="border-t border-gray-800 bg-black/20">
-		<div class="container mx-auto flex flex-col items-center justify-between gap-4 px-6 py-6 md:flex-row">
-			<p class="text-sm text-gray-500">
-				&copy; {year}
-				<span class="text-gray-400">{t("footer.company.name")}</span> - {t("footer.rights")}
-			</p>
-			<div class="flex items-center gap-6 text-sm text-gray-500">
-				<span class="flex items-center gap-2">
-					<ShieldCheck class="text-primary h-4 w-4" />
-					CIF: B70664057
-				</span>
-			</div>
-		</div>
-	</div>
+  <nav>
+    <h6 class="footer-title text-white">{t("footer.title.services")}</h6>
+    {
+      footerServices.map(service => (
+        <a href={service.href} class="link link-hover text-gray-300 hover:text-white">
+          {t(`services.${service.id}.title`)}
+        </a>
+      ))
+    }
+  </nav>
+
+  <nav>
+    <h6 class="footer-title text-white">{t("footer.title.legal")}</h6>
+    {
+      legalLinks.map(link => (
+        <a href={link.href} class="link link-hover text-gray-300 hover:text-white">
+          {link.name}
+        </a>
+      ))
+    }
+  </nav>
+
+  <nav>
+    <h6 class="footer-title text-white">{t("footer.title.schedule")}</h6>
+    <p class="link text-gray-300 no-underline">{t("footer.schedule.days")}</p>
+    <p class="link text-gray-300 no-underline">{t("footer.schedule.hours")}</p>
+  </nav>
 </footer>
+
+<div class="border-t border-gray-800 bg-black">
+  <div class="container mx-auto flex flex-col items-center justify-between gap-4 px-6 py-6 md:flex-row">
+    <p class="text-sm text-gray-500">
+      &copy; {year}
+      <span class="text-gray-400">{t("footer.company.name")}</span> - {t("footer.rights")}
+    </p>
+    <div class="flex items-center gap-6 text-sm text-gray-500">
+      <span class="flex items-center gap-2">
+        <ShieldCheck class="text-primary h-4 w-4" />
+        CIF: B70664057
+      </span>
+    </div>
+  </div>
+</div>

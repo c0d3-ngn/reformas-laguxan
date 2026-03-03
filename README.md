@@ -74,17 +74,17 @@ The website includes JSON-LD structured data for local business:
 
 ```json
 {
-	"@context": "https://schema.org",
-	"@type": "LocalBusiness",
-	"name": "Company Name",
-	"image": "https://example.com/logo.png",
-	"address": {
-		"@type": "PostalAddress",
-		"addressLocality": "Madrid",
-		"addressCountry": "ES"
-	},
-	"areaServed": "Madrid, Spain",
-	"priceRange": "€€€"
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Company Name",
+  "image": "https://example.com/logo.png",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Madrid",
+    "addressCountry": "ES"
+  },
+  "areaServed": "Madrid, Spain",
+  "priceRange": "€€€"
 }
 ```
 

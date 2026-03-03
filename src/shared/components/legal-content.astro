@@ -1,58 +1,61 @@
 ---
 interface Props {
-	title: string
-	sections: number[]
-	translationKey: string
-	lastUpdate: string
+  title: string
+  intro?: string
+  sections: number[]
+  translationKey: string
+  lastUpdate: string
 }
 
-const { title, sections, translationKey, lastUpdate } = Astro.props
+const { title, intro, sections, translationKey, lastUpdate } = Astro.props
 import { useTranslations } from "@utils/i18n"
 const t = useTranslations()
 ---
 
 <div class="min-h-screen bg-gray-50 py-12 md:py-20">
-	<div class="container mx-auto max-w-4xl px-4 md:px-6">
-		<!-- Header -->
-		<div class="mb-10 text-center md:mb-14">
-			<h1 class="text-neutral-dark mb-4 text-3xl font-bold tracking-tight md:text-5xl">
-				{title}
-			</h1>
-			<div class="bg-primary mx-auto h-1 w-20 rounded-full"></div>
-		</div>
+  <div class="container mx-auto max-w-4xl px-4 md:px-6">
+    <!-- Header -->
+    <div class="mb-10 text-center md:mb-14">
+      <h1 class="text-neutral-dark mb-4 text-3xl font-bold tracking-tight md:text-5xl">
+        {title}
+      </h1>
+      <div class="bg-primary mx-auto h-1 w-20 rounded-full"></div>
+    </div>
 
-		<!-- Content Card -->
-		<div class="rounded-2xl bg-white p-6 shadow-xl ring-1 ring-gray-100 md:p-12">
-			<div
-				class="prose prose-lg prose-p:text-gray-600 prose-p:leading-relaxed prose-li:text-gray-600 prose-strong:text-neutral-dark max-w-none"
-			>
-				<div class="space-y-10">
-					{
-						sections.map(id => (
-							<div class="group relative">
-								<div class="mb-4 flex items-start gap-4">
-									<div class="bg-primary/10 text-primary border-primary/20 group-hover:bg-primary flex h-10 w-10 shrink-0 items-center justify-center rounded-full border text-lg font-bold shadow-sm transition-colors group-hover:text-white">
-										{id}
-									</div>
-									<h3 class="text-neutral-dark group-hover:text-primary m-0 pt-1.5 text-xl font-bold transition-colors">
-										{t(`${translationKey}.section.${id}.title`)}
-									</h3>
-								</div>
+    <!-- Content Card -->
+    <div class="rounded-2xl bg-white p-6 shadow-xl ring-1 ring-gray-100 md:p-12">
+      <div
+        class="prose prose-lg prose-p:text-gray-600 prose-p:leading-relaxed prose-li:text-gray-600 prose-strong:text-neutral-dark max-w-none"
+      >
+        {intro && <p class="mb-8 leading-relaxed text-gray-600">{intro}</p>}
 
-								<div class="pl-14">
-									<div class="group-hover:border-primary/30 border-l-2 border-gray-100 py-1 pl-6 leading-relaxed text-gray-600 transition-colors">
-										<p class="m-0" set:html={t(`${translationKey}.section.${id}.content`)} />
-									</div>
-								</div>
-							</div>
-						))
-					}
-				</div>
+        <div class="space-y-10">
+          {
+            sections.map(id => (
+              <div class="group relative">
+                <div class="mb-4 flex items-start gap-4">
+                  <div class="bg-primary/10 text-primary border-primary/20 group-hover:bg-primary flex h-10 w-10 shrink-0 items-center justify-center rounded-full border text-lg font-bold shadow-sm transition-colors group-hover:text-white">
+                    {id}
+                  </div>
+                  <h3 class="text-neutral-dark group-hover:text-primary m-0 pt-1.5 text-xl font-bold transition-colors">
+                    {t(`${translationKey}.section.${id}.title`)}
+                  </h3>
+                </div>
 
-				<div class="mt-10 border-t border-gray-100 pt-6 text-sm text-gray-500 italic">
-					{lastUpdate}
-				</div>
-			</div>
-		</div>
-	</div>
+                <div class="pl-14">
+                  <div class="group-hover:border-primary/30 border-l-2 border-gray-100 py-1 pl-6 leading-relaxed text-gray-600 transition-colors">
+                    <p class="m-0" set:html={t(`${translationKey}.section.${id}.content`)} />
+                  </div>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+
+        <div class="mt-10 border-t border-gray-100 pt-6 text-sm text-gray-500 italic">
+          {lastUpdate}
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

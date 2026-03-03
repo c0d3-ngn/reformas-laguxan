@@ -1,22 +1,83 @@
 ---
 import NavbarLogo from "@components/navbar/navbar-logo.astro"
-import NavbarDesktopMenu from "@components/navbar/navbar-desktop-menu.astro"
-import NavbarMobileMenu from "@components/navbar/navbar-mobile-menu.astro"
+import { navLinks } from "@data/navigation"
+import { Menu, MessageCircle, X } from "@lucide/astro"
 import { useTranslations } from "@utils/i18n"
-import { ROUTES } from "@utils/routes"
 
 const t = useTranslations()
-
-const links = [
-	{ text: t("nav.home"), href: ROUTES.HOME },
-	{ text: t("nav.about"), href: ROUTES.ABOUT },
-	{ text: t("nav.services"), href: ROUTES.SERVICES },
-	{ text: t("nav.projects"), href: ROUTES.PROJECTS },
-	{ text: t("nav.contact"), href: ROUTES.CONTACT },
-]
 ---
 
-<NavbarMobileMenu links={links}>
-	<NavbarLogo slot="logo" />
-	<NavbarDesktopMenu links={links} slot="desktop" />
-</NavbarMobileMenu>
+<nav class="navbar sticky top-0 z-50 h-16 shrink-0 border-b border-gray-100 bg-white shadow-sm">
+  <div class="container mx-auto w-full px-6">
+    <div class="flex h-full w-full items-center justify-between">
+      <div class="flex items-center">
+        <NavbarLogo />
+      </div>
+      <div class="hidden items-center gap-8 md:flex">
+        {
+          navLinks.map(link => (
+            <a href={link.href} class="hover:text-primary text-sm font-medium text-gray-600 transition-colors">
+              {t(link.textKey)}
+            </a>
+          ))
+        }
+      </div>
+      <div class="flex items-center md:hidden">
+        <label
+          for="mobile-menu"
+          class="btn btn-ghost btn-square hover:text-primary text-gray-600"
+          aria-label={t("nav.menu.open")}
+        >
+          <Menu class="h-6 w-6" />
+        </label>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<input id="mobile-menu" type="checkbox" class="drawer-toggle" />
+
+<div class="drawer-side z-50">
+  <label for="mobile-menu" class="drawer-overlay fixed inset-0 bg-black/60"></label>
+  <div class="menu flex h-full w-80 max-w-[85vw] flex-col bg-white shadow-xl">
+    <div class="flex items-center justify-between border-b border-gray-100 px-6 py-5">
+      <div class="flex items-center gap-3">
+        <NavbarLogo />
+      </div>
+      <label
+        for="mobile-menu"
+        class="btn btn-ghost btn-sm btn-circle text-gray-400 hover:bg-gray-100 hover:text-gray-600"
+        aria-label={t("nav.mobile.close")}
+      >
+        <X class="h-5 w-5" />
+      </label>
+    </div>
+
+    <div class="flex-1 overflow-y-auto py-4">
+      <ul class="menu menu-lg gap-1 px-4">
+        {
+          navLinks.map(link => (
+            <li>
+              <a
+                href={link.href}
+                class="hover:bg-primary/5 hover:text-primary flex items-center gap-4 rounded-xl px-4 py-3 text-base font-medium text-gray-600 transition-all"
+              >
+                <span class="group-hover:bg-primary flex h-10 w-10 items-center justify-center rounded-lg bg-gray-100 text-gray-500 transition-colors group-hover:text-white">
+                  <link.icon class="h-5 w-5" />
+                </span>
+                {t(link.textKey)}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+
+    <div class="border-t border-gray-100 bg-gray-50/50 p-6">
+      <a href="/contact" class="btn btn-primary shadow-primary/30 w-full gap-3 rounded-xl shadow-lg">
+        <MessageCircle class="h-5 w-5" />
+        {t("nav.mobile.request_budget")}
+      </a>
+    </div>
+  </div>
+</div>

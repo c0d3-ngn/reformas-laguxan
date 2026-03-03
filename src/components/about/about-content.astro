@@ -1,55 +1,54 @@
 ---
+import { Check } from "@lucide/astro"
 import { ASSETS } from "@utils/assets"
 import { useTranslations } from "@utils/i18n"
 
 const t = useTranslations()
+
+const valueKeys = [1, 2, 3] as const
 ---
 
 <section class="container mx-auto px-6 py-20">
-	<div class="grid items-center gap-12 md:grid-cols-2">
-		<div class="animate-in slide-in-from-left-8 fade-in fill-mode-both duration-1000">
-			<h1 class="text-neutral-dark mb-6 text-4xl font-bold">
-				{t("about.title")}
-			</h1>
-			<p class="mb-4 leading-relaxed text-gray-600">
-				{t("about.p1")}
-			</p>
-			<p class="mb-6 leading-relaxed text-gray-600">
-				{t("about.p2")}
-			</p>
+  <div class="grid items-center gap-12 md:grid-cols-2">
+    <div class="animate-in slide-in-from-left-8 fade-in fill-mode-both duration-1000">
+      <h1 class="text-neutral-dark mb-6 text-4xl font-bold">
+        {t("about.title")}
+      </h1>
+      <p class="mb-4 leading-relaxed text-gray-600">
+        {t("about.p1")}
+      </p>
+      <p class="mb-6 leading-relaxed text-gray-600">
+        {t("about.p2")}
+      </p>
 
-			<h3 class="text-primary mb-4 text-2xl font-bold">
-				{t("about.values.title")}
-			</h3>
-			<ul class="space-y-3">
-				<li class="flex items-center gap-3">
-					<span class="text-accent">✓</span>
-					{t("about.values.1")}
-				</li>
-				<li class="flex items-center gap-3">
-					<span class="text-accent">✓</span>
-					{t("about.values.2")}
-				</li>
-				<li class="flex items-center gap-3">
-					<span class="text-accent">✓</span>
-					{t("about.values.3")}
-				</li>
-			</ul>
-		</div>
-		<div class="animate-in slide-in-from-right-8 fade-in fill-mode-both relative delay-300 duration-1000">
-			<img
-				src={ASSETS.ABOUT.MAIN}
-				srcset={`${ASSETS.ABOUT.MAIN}&w=400 400w, ${ASSETS.ABOUT.MAIN}&w=800 800w, ${ASSETS.ABOUT.MAIN}&w=1000 1000w`}
-				sizes="(max-width: 768px) 100vw, 50vw"
-				alt={t("about.img.alt")}
-				class="relative z-10 h-96 w-full rounded-lg object-cover shadow-xl transition-transform duration-500 hover:scale-[1.02]"
-				loading="lazy"
-				decoding="async"
-			/>
-			<div class="bg-primary absolute -bottom-6 -left-6 z-20 hidden rounded-lg p-6 text-white shadow-lg md:block">
-				<p class="text-3xl font-bold">25+</p>
-				<p class="text-sm">{t("about.stats.years")}</p>
-			</div>
-		</div>
-	</div>
+      <h3 class="text-primary mb-4 text-2xl font-bold">
+        {t("about.values.title")}
+      </h3>
+      <ul class="space-y-3">
+        {
+          valueKeys.map(key => (
+            <li class="flex items-center gap-3">
+              <Check size={20} class="text-accent" />
+              {t(`about.values.${key}`)}
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+    <div class="animate-in slide-in-from-right-8 fade-in fill-mode-both relative delay-300 duration-1000">
+      <img
+        src={ASSETS.ABOUT.MAIN}
+        srcset={`${ASSETS.ABOUT.MAIN}&w=400 400w, ${ASSETS.ABOUT.MAIN}&w=800 800w, ${ASSETS.ABOUT.MAIN}&w=1000 1000w`}
+        sizes="(max-width: 768px) 100vw, 50vw"
+        alt={t("about.img.alt")}
+        class="relative z-10 h-96 w-full rounded-lg object-cover shadow-xl transition-transform duration-500 hover:scale-[1.02]"
+        loading="lazy"
+        decoding="async"
+      />
+      <div class="bg-primary absolute -bottom-6 -left-6 z-20 hidden rounded-lg p-6 text-white shadow-lg md:block">
+        <p class="text-3xl font-bold">25+</p>
+        <p class="text-sm">{t("about.stats.years")}</p>
+      </div>
+    </div>
+  </div>
 </section>

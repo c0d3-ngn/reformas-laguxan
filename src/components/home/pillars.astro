@@ -5,31 +5,36 @@ import { useTranslations } from "@utils/i18n"
 const t = useTranslations()
 
 const pillars = [
-	{ icon: House, title: t("pillars.1.title"), desc: t("pillars.1.desc"), delay: "100" },
-	{ icon: HardHat, title: t("pillars.2.title"), desc: t("pillars.2.desc"), delay: "200" },
-	{ icon: Award, title: t("pillars.3.title"), desc: t("pillars.3.desc"), delay: "300" },
+  { icon: House, title: t("pillars.1.title"), desc: t("pillars.1.desc"), delay: "100" },
+  { icon: HardHat, title: t("pillars.2.title"), desc: t("pillars.2.desc"), delay: "200" },
+  { icon: Award, title: t("pillars.3.title"), desc: t("pillars.3.desc"), delay: "300" },
 ]
 ---
 
 <section class="bg-neutral-light py-20">
-	<div class="container mx-auto px-6 text-center">
-		<h2
-			class="text-neutral-dark animate-in fade-in slide-in-from-bottom-4 view-transition-name-[heading-pillars] mb-12 text-3xl font-bold duration-700"
-		>
-			{t("pillars.title")}
-		</h2>
-		<div class="grid gap-8 md:grid-cols-3">
-			{
-				pillars.map(pillar => (
-					<div class="animate-in fade-in slide-in-from-bottom-8 fill-mode-both delay-{pillar.delay} rounded-lg bg-white p-8 shadow-sm transition-all duration-300 duration-700 hover:-translate-y-1 hover:shadow-xl">
-						<div class="text-primary mb-4 flex justify-center transition-transform group-hover:scale-110">
-							<pillar.icon class="h-10 w-10" />
-						</div>
-						<h3 class="mb-2 text-xl font-bold">{pillar.title}</h3>
-						<p class="text-gray-600">{pillar.desc}</p>
-					</div>
-				))
-			}
-		</div>
-	</div>
+  <div class="container mx-auto px-6 text-center">
+    <h2
+      class="text-neutral-dark animate-in fade-in slide-in-from-bottom-4 view-transition-name-[heading-pillars] mb-12 text-3xl font-bold duration-700"
+    >
+      {t("pillars.title")}
+    </h2>
+    <div class="grid gap-8 md:grid-cols-3">
+      {
+        pillars.map(pillar => (
+          <div
+            class="card group animate-in fade-in slide-in-from-bottom-8 fill-mode-both bg-white shadow-sm transition-all duration-300 duration-700 hover:shadow-xl"
+            style={`animation-delay: ${pillar.delay}ms`}
+          >
+            <div class="card-body items-center text-center">
+              <div class="text-primary mb-4 flex justify-center transition-transform duration-300 group-hover:scale-110">
+                <pillar.icon class="h-10 w-10" />
+              </div>
+              <h3 class="card-title justify-center text-xl font-bold text-gray-900">{pillar.title}</h3>
+              <p class="text-gray-600">{pillar.desc}</p>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
 </section>

@@ -1,17 +1,17 @@
 {
-	"name": "Reformas Laguxan",
-	"short_name": "Laguxan",
-	"description": "Expertos en reformas integrales y construcción de obra nueva.",
-	"start_url": "/",
-	"display": "standalone",
-	"background_color": "#ffffff",
-	"theme_color": "#1e293b",
-	"icons": [
-		{
-			"src": "/logo.svg",
-			"sizes": "192x192 512x512",
-			"type": "image/svg+xml",
-			"purpose": "any maskable"
-		}
-	]
+  "name": "Reformas Laguxan",
+  "short_name": "Laguxan",
+  "description": "Expertos en reformas integrales y construcción de obra nueva.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#1e293b",
+  "icons": [
+    {
+      "src": "/logo.svg",
+      "sizes": "192x192 512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
 }
